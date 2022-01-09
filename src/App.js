@@ -15,13 +15,12 @@ import ChangePassword from './components/auth/ChangePassword'
 
 // socket.io client
 const { io } = require('socket.io-client')
+// following line deactivates pollings (used this to prevent cors error before finding better solution)
 // const socket = io('http://localhost:8000', { transports : ['websocket'] })
 const socket = io('http://localhost:8000')
 
-
-
 socket.on('connect', () => {
-	console.log(socket.id)
+	console.log('SOCKET client connected:', socket.id)
 })
 
 const App = () => {
@@ -29,8 +28,8 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
 
-  console.log('user in app', user)
-  console.log('message alerts', msgAlerts)
+//   console.log('user in app', user)
+//   console.log('message alerts', msgAlerts)
   const clearUser = () => {
     console.log('clear user ran')
     setUser(null)
