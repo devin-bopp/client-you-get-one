@@ -13,6 +13,14 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 
+// socket.io client
+const { io } = require('socket.io-client')
+const socket = io('http://localhost:8000', { transports : ['websocket'] })
+
+socket.on('connect', () => {
+	console.log(socket.id)
+})
+
 const App = () => {
 
   const [user, setUser] = useState(null)
