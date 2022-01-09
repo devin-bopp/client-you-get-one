@@ -52,7 +52,7 @@ const SignIn = (props) => {
 	}
 
     return (
-        <div className='row'>
+        <>
             <h3>Sign In</h3>
             <form onSubmit={onSignIn}>
                 <label for='email'>Email address</label>
@@ -77,7 +77,7 @@ const SignIn = (props) => {
                 />
                 <input type='submit' value='Submit' />
             </form>
-        </div>
+        </>
     )
 }
 
