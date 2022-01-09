@@ -1,7 +1,7 @@
-import SignIn from "./auth/SignIn"
-import SignUp from "./auth/SignUp"
+import SignIn from "../auth/SignIn"
+import SignUp from "../auth/SignUp"
 
-const Home = (props) => {
+export default function Home(props) {
 	// const { msgAlert, user } = props
 	// console.log('props in home', props)
 	let forms
@@ -30,5 +30,3 @@ const Home = (props) => {
 		</>
 	)
 }
-
-export default Home
