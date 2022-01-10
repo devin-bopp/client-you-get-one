@@ -38,14 +38,19 @@ const SignIn = (props) => {
 					message: messages.signInSuccess,
 					variant: 'success',
 				})
-                props.getProfile()
             })
-			.then(() => {
-                if (!props.profile) {
-                    navigate('/new-profile')
-                } else {
+            .then(() => {
+                props.getProfile()
+                console.log('this is props.profile after getProfile()', props.profile)
+                return props.profile
+            })
+			.then((profile) => {
+                // if (!profile) {
+                //     navigate('/new-profile')
+                //     console.log(props.profile)
+                // } else {
                     navigate('/')
-                }
+                // }
             })
 			.catch((error) => {
                 setEmail('')

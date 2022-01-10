@@ -16,6 +16,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateProfile from './components/pages/CreateProfile'
+import Queue from './components/pages/Queue'
 
 // socket.io client
 const { io } = require('socket.io-client')
@@ -26,6 +27,14 @@ const socket = io('http://localhost:8000')
 socket.on('connect', () => {
 	console.log('SOCKET client connected:', socket.id)
 })
+
+// not sure if this will work but let's see!
+const messageSend = (message, setNewMessage) => {
+	if (message) {
+		socket.emit('chat message', message)
+		setNewMessage('')
+	}
+}
 
 const App = () => {
 
@@ -124,6 +133,14 @@ const App = () => {
 						<RequireAuth user={user}>
 							<ChangePassword msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
+				/>
+				<Route
+					path='/queue'
+					element={
+						<RequireAuth user={user}>
+							<Queue user={user} profile={profile} messageSend={messageSend} />
+						</RequireAuth>
+					}
 				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (

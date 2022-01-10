@@ -1,6 +1,7 @@
 import SignIn from "../auth/SignIn"
 import SignUp from "../auth/SignUp"
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export default function Home(props) {
 	// const { msgAlert, user } = props
@@ -14,20 +15,23 @@ export default function Home(props) {
 					<SignUp msgAlert={props.msgAlert} setUser={props.setUser} />
 				</div>
 				<div id='log-in'>
-					<SignIn msgAlert={props.msgAlert} setUser={props.setUser} getProfile={props.getProfile} />
+					<SignIn msgAlert={props.msgAlert} setUser={props.setUser} profile={props.profile} getProfile={props.getProfile} />
 				</div>
 			</>
 		)
 	} else if (!props.profile) {
 		content = (
 			<>
-				<p>this will appear if there IS a user but no profile.name</p>
+				<p>You haven't created your profile yet!</p>
+				<Link to='new-profile'>Click here</Link> to get started.
 			</>
 		)
 	} else {
 		content = (
-			// <p>teset: {props.profile.name}</p>
-			<p>Welcome, {props.profile.name}!</p>
+			<>
+				<p>Welcome, {props.profile.name}!</p>
+				<Link to='queue'>Go to the queue</Link>
+			</>
 		)
 	}
 
