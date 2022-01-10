@@ -1,7 +1,9 @@
 // import React, { Component, Fragment } from 'react'
-import React, { useState, Fragment } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+
+import apiUrl from './apiConfig'
 
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
@@ -28,6 +30,7 @@ socket.on('connect', () => {
 const App = () => {
 
 	const [user, setUser] = useState(null)
+	const [profile, setProfile] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 
 	//   console.log('user in app', user)
@@ -51,6 +54,29 @@ const App = () => {
 			)
 		})
 	}
+
+	// retrive current user's profile from the server
+	const getProfile = () => {
+		if (user != null) {
+			console.log('this is user.token')
+			console.log(user.token)
+			fetch(apiUrl + '/profile', {
+				headers: { 'Content-Type': 'application/JSON', 'Authorization': 'Bearer ' + user.token }
+			})
+				.then(profile => {
+					return profile.json()
+				})
+				.then(profile => {
+					console.log(profile)
+					setProfile(profile[0])
+				})
+				.catch(error => console.log(error))
+		}
+	}
+
+	useEffect(() => {
+		getProfile()
+	}, [user])
 
 	return (
 		<Fragment>

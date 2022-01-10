@@ -45,6 +45,7 @@ export default function CreateProfile(props) {
             <form onSubmit={handleSubmit}>
                 <label for='name'>Username (6-20 characters)</label>
                 <input type='text' name='name' id='name' onChange={handleChange} />
+                <p>Other users will see this in chat and on the pet page.</p>
                 <input type="submit" value="Submit" />
             </form>
         </div>
