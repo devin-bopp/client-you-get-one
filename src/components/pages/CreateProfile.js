@@ -33,6 +33,7 @@ export default function CreateProfile(props) {
             .then(response => response.json())
             .then(() => {
                 setNewProfile({})
+                props.getProfile()
             })
             .then(() => navigate('/'))
             .catch(error => { console.log(error) })
