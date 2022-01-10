@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 const authenticatedOptions = (
 	<>
 		<li>
+			<Link to='new-profile'>Create Profile</Link>
+		</li>
+		<li>
 			<Link to='change-password'>Change Password</Link>
 		</li>
 		<li>
