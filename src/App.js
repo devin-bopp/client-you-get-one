@@ -90,9 +90,10 @@ const App = () => {
 							setUser={setUser} 
 							user={user} 
 							profile={profile}
-							/>
-						} 
+							getProfile={getProfile}
 						/>
+					} 
+				/>
 				<Route
 					path='/new-profile'
 					element={
@@ -107,7 +108,7 @@ const App = () => {
 				/>
 				<Route
 					path='/sign-in'
-					element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+					element={<SignIn msgAlert={msgAlert} setUser={setUser} getProfile={getProfile} />}
 				/>
 				<Route
 					path='/sign-out'

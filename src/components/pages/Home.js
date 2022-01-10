@@ -14,7 +14,7 @@ export default function Home(props) {
 					<SignUp msgAlert={props.msgAlert} setUser={props.setUser} />
 				</div>
 				<div id='log-in'>
-					<SignIn msgAlert={props.msgAlert} setUser={props.setUser} />
+					<SignIn msgAlert={props.msgAlert} setUser={props.setUser} getProfile={props.getProfile} />
 				</div>
 			</>
 		)

@@ -32,14 +32,21 @@ const SignIn = (props) => {
 
 		signIn(credentials)
 			.then((res) => setUser(res.data.user))
-			.then(() =>
+			.then(() => {
 				msgAlert({
 					heading: 'Sign In Success',
 					message: messages.signInSuccess,
 					variant: 'success',
 				})
-			)
-			.then(() => navigate('/'))
+                props.getProfile()
+            })
+			.then(() => {
+                if (!props.profile) {
+                    navigate('/new-profile')
+                } else {
+                    navigate('/')
+                }
+            })
 			.catch((error) => {
                 setEmail('')
                 setPassword('')
