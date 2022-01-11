@@ -22,25 +22,45 @@ import Queue from './components/pages/Queue'
 const { io } = require('socket.io-client')
 // following line deactivates pollings (used this to prevent cors error before finding better solution)
 // const socket = io('http://localhost:8000', { transports : ['websocket'] })
+
+// THIS IS GOING TO HAVE TO CHANGE FOR DEPLOYMENT!!!!
 const socket = io('http://localhost:8000')
 
-socket.on('connect', () => {
-	console.log('SOCKET client connected:', socket.id)
-})
-
-// not sure if this will work but let's see!
-const messageSend = (message, setNewMessage) => {
-	if (message) {
-		socket.emit('chat message', message)
-		setNewMessage('')
-	}
-}
+// socket.on('broadcast', msg => {
+// 	// const temp = messages
+// 	// setMessages([... temp, msg])
+// 	console.log('msg from server', msg)
+// })
 
 const App = () => {
 
 	const [user, setUser] = useState(null)
 	const [profile, setProfile] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
+	const [messages, setMessages] = useState([])
+
+	///////////////////////////////////////
+	// SOCKET.IO LISTENERS AND FUNCTIONS //
+	///////////////////////////////////////
+	console.log('this is right below state')
+
+	socket.on('connect', () => {
+		console.log('SOCKET client connected:', socket.id)
+	})
+
+	// not sure if this will work but let's see!
+	const messageSend = (message, setNewMessage) => {
+		if (message) {
+			socket.emit('chat message', message)
+			setNewMessage('')
+		}
+	}
+
+	socket.on('broadcast', msg => {
+		// const temp = messages
+		// setMessages([... temp, msg])
+		console.log('msg from server', msg)
+	})
 
 	//   console.log('user in app', user)
 	//   console.log('message alerts', msgAlerts)
@@ -91,17 +111,17 @@ const App = () => {
 		<Fragment>
 			<Header user={user} />
 			<Routes>
-				<Route 
-					path='/' 
+				<Route
+					path='/'
 					element={
-						<Home 
-							msgAlert={msgAlert} 
-							setUser={setUser} 
-							user={user} 
+						<Home
+							msgAlert={msgAlert}
+							setUser={setUser}
+							user={user}
 							profile={profile}
 							getProfile={getProfile}
 						/>
-					} 
+					}
 				/>
 				<Route
 					path='/new-profile'

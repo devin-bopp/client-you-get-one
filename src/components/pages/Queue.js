@@ -7,7 +7,7 @@ export default function Queue(props) {
         // <QueueDisplay />
 
         // chat goes here
-        <Chat messageSend={props.messageSend} />
+        <Chat messageSend={props.messageSend} profile={props.profile} />
 
     )
 }
