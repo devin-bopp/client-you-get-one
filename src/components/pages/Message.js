@@ -1,8 +1,8 @@
 export default function Message(props) {
     return(
         <>
-            <p>user name</p>
-            <p>message content</p>
+            <p>{props.sender}</p>
+            <p>{props.message}</p>
         </>
     )
 }

@@ -24,14 +24,14 @@ const { io } = require('socket.io-client')
 // const socket = io('http://localhost:8000', { transports : ['websocket'] })
 
 // THIS IS GOING TO HAVE TO CHANGE FOR DEPLOYMENT!!!!
-const socket = io('http://localhost:8000')
+export const socket = io('http://localhost:8000')
 
 const App = () => {
 	
 	const [user, setUser] = useState(null)
 	const [profile, setProfile] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
-	const [messages, setMessages] = useState([])
+	// const [messages, setMessages] = useState([])
 	
 	///////////////////////////////////////
 	// SOCKET.IO LISTENERS AND FUNCTIONS //
@@ -41,24 +41,24 @@ const App = () => {
 	// 	console.log('SOCKET client connected:', socket.id)
 	// })
 	
-	useEffect(() => {
-		socket.on('broadcast', msg => {
-			console.log('this is messages: ', messages)
-			console.log('msg from server', msg)
-			const temp = messages
-			temp.push(msg)
-			console.log('this is the temp array', temp)
-			setMessages(temp)
-		})
-	}, [socket])
+	// useEffect(() => {
+	// 	socket.on('broadcast', msg => {
+	// 		console.log('this is messages: ', messages)
+	// 		console.log('msg from server', msg)
+	// 		const temp = messages
+	// 		temp.push(msg)
+	// 		console.log('this is the temp array', temp)
+	// 		setMessages(temp)
+	// 	})
+	// }, [socket])
 
 	// not sure if this will work but let's see!
-	const messageSend = (message, setNewMessage) => {
-		if (message) {
-			socket.emit('chat message', message)
-			setNewMessage('')
-		}
-	}
+	// const messageSend = (message, setNewMessage) => {
+	// 	if (message) {
+	// 		socket.emit('chat message', message)
+	// 		setNewMessage('')
+	// 	}
+	// }
 
 	//   console.log('user in app', user)
 	//   console.log('message alerts', msgAlerts)
@@ -155,7 +155,12 @@ const App = () => {
 					path='/queue'
 					element={
 						<RequireAuth user={user}>
-							<Queue user={user} profile={profile} messageSend={messageSend} />
+							<Queue 
+								user={user} 
+								profile={profile} 
+								// messageSend={messageSend}
+								// messages={messages} 
+							/>
 						</RequireAuth>
 					}
 				/>

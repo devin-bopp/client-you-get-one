@@ -1,4 +1,5 @@
 import Chat from "./Chat"
+import { socket } from "../../App"
 
 export default function Queue(props) {
 
@@ -7,7 +8,9 @@ export default function Queue(props) {
         // <QueueDisplay />
 
         // chat goes here
-        <Chat messageSend={props.messageSend} profile={props.profile} />
+        <Chat 
+            profile={props.profile} 
+        />
 
     )
 }
