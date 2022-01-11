@@ -26,27 +26,31 @@ const { io } = require('socket.io-client')
 // THIS IS GOING TO HAVE TO CHANGE FOR DEPLOYMENT!!!!
 const socket = io('http://localhost:8000')
 
-// socket.on('broadcast', msg => {
-// 	// const temp = messages
-// 	// setMessages([... temp, msg])
-// 	console.log('msg from server', msg)
-// })
-
 const App = () => {
-
+	
 	const [user, setUser] = useState(null)
 	const [profile, setProfile] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	const [messages, setMessages] = useState([])
-
+	
 	///////////////////////////////////////
 	// SOCKET.IO LISTENERS AND FUNCTIONS //
 	///////////////////////////////////////
-	console.log('this is right below state')
-
-	socket.on('connect', () => {
-		console.log('SOCKET client connected:', socket.id)
-	})
+	
+	// socket.on('connect', () => {
+	// 	console.log('SOCKET client connected:', socket.id)
+	// })
+	
+	useEffect(() => {
+		socket.on('broadcast', msg => {
+			console.log('this is messages: ', messages)
+			console.log('msg from server', msg)
+			const temp = messages
+			temp.push(msg)
+			console.log('this is the temp array', temp)
+			setMessages(temp)
+		})
+	}, [socket])
 
 	// not sure if this will work but let's see!
 	const messageSend = (message, setNewMessage) => {
@@ -55,12 +59,6 @@ const App = () => {
 			setNewMessage('')
 		}
 	}
-
-	socket.on('broadcast', msg => {
-		// const temp = messages
-		// setMessages([... temp, msg])
-		console.log('msg from server', msg)
-	})
 
 	//   console.log('user in app', user)
 	//   console.log('message alerts', msgAlerts)
@@ -96,7 +94,6 @@ const App = () => {
 					return profile.json()
 				})
 				.then(profile => {
-					console.log(profile)
 					setProfile(profile[0])
 				})
 				.catch(error => console.log(error))
