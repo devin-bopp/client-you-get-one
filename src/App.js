@@ -28,6 +28,7 @@ const App = () => {
 	
 	const [user, setUser] = useState(null)
 	const [profile, setProfile] = useState(null)
+	const [queue, setQueue] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	
 	const clearUser = () => {
@@ -53,8 +54,6 @@ const App = () => {
 	// retrive current user's profile from the server
 	const getProfile = () => {
 		if (user != null) {
-			console.log('this is user.token')
-			console.log(user.token)
 			fetch(apiUrl + '/profile', {
 				headers: { 'Content-Type': 'application/JSON', 'Authorization': 'Bearer ' + user.token }
 			})
@@ -68,8 +67,25 @@ const App = () => {
 		}
 	}
 
+	// retriever current user's queue position from server
+	const getQueue = () => {
+		if (user != null) {
+			fetch(apiUrl + '/queue', {
+				headers: { 'Content-Type': 'application/JSON', 'Authorization': 'Bearer ' + user.token }
+			})
+				.then(queue => {
+					return queue.json()
+				})
+				.then(queue => {
+					setQueue(queue[0])
+				})
+				.catch(error => console.log(error))
+		}
+	}
+
 	useEffect(() => {
 		getProfile()
+		getQueue()
 	}, [user])
 
 	return (
