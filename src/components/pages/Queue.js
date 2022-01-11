@@ -9,9 +9,6 @@ export default function Queue(props) {
         console.log('the use effect ')
         socket.on('broadcast', data => {
             console.log(messagesData)
-            // let previousData = messagesData
-            // previousData.push(data)
-            // setMessagesData(previousData)
             setMessagesData(prev => prev.concat([data]))
 		})
     }, [socket])

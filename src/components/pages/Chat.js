@@ -27,11 +27,6 @@ export default function Chat(props) {
 	}
 
     const [updateToggle, setUpdateToggle] = useState(true)
-    // HACKY SOLUTION DO NOT USE
-    // setInterval(() => {
-    //         setUpdateToggle(prev => !prev)
-    //     }, 1000)
-    
         
     const messages = props.messagesData.map((data, i) => {
         return <Message
