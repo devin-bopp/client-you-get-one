@@ -10,9 +10,6 @@ export default function Chat(props) {
         message: '',
         sender: props.profile.name
     })
-    const [messagesData, setMessagesData] = useState([])
-    const [updateToggle, setUpdateToggle] = useState(true)
-
 
     const messageChangeHandler = (e) => {
         setNewPayload({... newPayload, [e.target.name]: e.target.value})
@@ -29,51 +26,22 @@ export default function Chat(props) {
 		}
 	}
 
-    // let messages
-
-    // const buildMessages = (arr) => {
-    //     messages = arr.map((data, i) => {
-    //         return <Message key={i} sender={data.sender} message={data.message} />
-    //     })
-    //     // setUpdateToggle(prev => !prev)
-    // }
-    
-
-
-    useEffect(() => {
-        console.log('the use effect ')
-        socket.on('broadcast', data => {
-            console.log(messagesData)
-            let previousData = messagesData
-            previousData.push(data)
-            // buildMessages(previousData)
-            setMessagesData(previousData)
-		})
-    }, [socket])
-    
-    let messages
-
-    setTimeout(() => {
-        messages = messagesData.map((data, i) => {
-            return <Message key={i} sender={data.sender} message={data.message} />
-        })
-    }, 2000)
-
-    // useEffect(() => {
-    //     setUpdateToggle(prev => !prev)
-    // }, [messagesData])
-
-    // useEffect(() => {
-    //     let newMessageCount = messageCount + 1
-    //     setMessageCount(newMessageCount)
-    // }, [messages])
-
+    const [updateToggle, setUpdateToggle] = useState(true)
     // HACKY SOLUTION DO NOT USE
     // setInterval(() => {
-    //     let newMessageCount = messageCount + 1
-    //     setMessageCount(newMessageCount)
-    // }, 1000)
+    //         setUpdateToggle(prev => !prev)
+    //     }, 1000)
     
+        
+    const messages = props.messagesData.map((data, i) => {
+        return <Message
+            key={i}
+            sender={data.sender}
+            message={data.message}
+            isSelf={props.profile.name === data.sender}
+        />
+    })
+
     return(
         <div id='chatbox'>
             <div id='messages'>
