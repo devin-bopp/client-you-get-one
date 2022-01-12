@@ -37,7 +37,6 @@ export default function Home(props) {
 
 	return (
 		<>
-			<h2>you get one</h2>
 			<p>welcome to <em>you get one</em>, a virtual pet for your and friends!</p>
 			<p>Due to bandwidth restrictions, only one user may play with the pet at a time. Thank you for understanding!</p>
 			{content}

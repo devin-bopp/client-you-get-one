@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 body {
   background-color: #4A1942;
   color: #2E1C2B;
@@ -10,9 +12,18 @@ body {
   max-width: 600px;
   margin: auto;
   min-height: 100vh;
-  padding: 0 20px;
+  padding: 10px 30px;
 }
 
+h1, h2 {
+  font-family: 'Staatliches', cursive;
+  margin: 0;
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
 
 ul {
   margin: 0;
@@ -43,6 +54,10 @@ ul {
   margin: 4px 0;
 }
 
+#wordmark {
+  text-decoration: none;
+  color: inherit
+}
 
 @media only screen and (max-width: 600px) {
   #root {

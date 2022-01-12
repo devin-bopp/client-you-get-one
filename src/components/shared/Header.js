@@ -35,12 +35,16 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<nav>
-		<ul>
-				{alwaysOptions}
-				{user ? authenticatedOptions : unauthenticatedOptions}
-		</ul>
-	</nav>
+	// <nav>
+	// 	<ul>
+	// 			{alwaysOptions}
+	// 			{user ? authenticatedOptions : unauthenticatedOptions}
+	// 	</ul>
+	// </nav>
+	<div>
+		<Link id='wordmark' to=''><h1>YOU GET ONE</h1></Link>
+		<h2>an exclusive virtual pet experience</h2>
+	</div>
 )
 
 export default Header
