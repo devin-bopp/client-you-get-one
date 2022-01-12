@@ -35,6 +35,25 @@ export default function Queue(props) {
     // content for the queue display
     let queueDisplay
 
+    if (props.queue === 0) {
+        queueDisplay = (
+            <form onSubmit={joinQueue}>
+                <input type='submit' value='Get In Line!' />
+            </form>
+        )
+    } else if (props.queue === 1) {
+        queueDisplay = (
+            <>
+                <p>It's your turn!</p>
+                <p>Click here to enter.</p>
+            </>
+        )
+    } else {
+        queueDisplay = (
+            <p>There are {props.queue} users ahead of you!</p>
+        )
+    }
+
     if (!props.queue) {
         queueDisplay = (
             <form onSubmit={joinQueue}>
