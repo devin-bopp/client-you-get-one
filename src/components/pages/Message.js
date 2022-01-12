@@ -4,7 +4,7 @@ export default function Message(props) {
     if (!props.sameSender) {
         message = (
             <>
-                <p className='sender'><b>{props.sender}</b></p>
+                <p className='sender'>{props.isSelf ? (<b><i>{props.sender}</i></b>) : (<b>{props.sender}</b>) }</p>
                 <p className='message-text'>{props.message}</p>
             </>
         )
@@ -20,16 +20,4 @@ export default function Message(props) {
             {message}
         </div>
     )
-//     let name
-//     if (props.isSelf) {
-//         name = <span><i><b>{props.sender}</b></i></span>
-//     } else {
-//         name = <span>{props.sender}</span>
-//     }
-//     return(
-//         <div className='message' key={props.key}>
-//             <p>{name}</p>
-//             <p>{props.message}</p>
-//         </div>
-//     )
 }
