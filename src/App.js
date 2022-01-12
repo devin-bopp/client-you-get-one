@@ -70,14 +70,21 @@ const App = () => {
 	// retriever current user's queue position from server
 	const getQueue = () => {
 		if (user != null) {
-			fetch(apiUrl + '/queue', {
+			fetch(apiUrl + '/queue/sort', {
 				headers: { 'Content-Type': 'application/JSON', 'Authorization': 'Bearer ' + user.token }
 			})
-				.then(queue => {
-					return queue.json()
+				.then(data => data.json())
+				.then(fullQueue => {
+					return fullQueue.map(queue => {
+						return queue.owner._id
+					})
 				})
-				.then(queue => {
-					setQueue(queue[0])
+				.then(fullQueueIds => {
+					return fullQueueIds.indexOf(user._id)
+				})
+				.then(index => {
+					console.log('this is the idnex of the item we are lookign at:', index)
+					setQueue(index + 1)
 				})
 				.catch(error => console.log(error))
 		}
@@ -142,8 +149,8 @@ const App = () => {
 							<Queue 
 								user={user} 
 								profile={profile} 
-								// messageSend={messageSend}
-								// messages={messages} 
+								queue={queue}
+								getQueue={getQueue}
 							/>
 						</RequireAuth>
 					}

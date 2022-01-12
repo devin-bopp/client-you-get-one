@@ -5,6 +5,7 @@ import apiUrl from "../../apiConfig"
 
 export default function Queue(props) {
     const [messagesData, setMessagesData] = useState([])
+    const [inLine, setInLine] = useState(false)
 
     useEffect(() => {
         console.log('the use effect ')
@@ -26,19 +27,49 @@ export default function Queue(props) {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
+                props.getQueue()
             })
             .catch(error => {console.log(error)})
     }
 
-    console.log('this is messagesData in queue.js', messagesData)
+    // content for the queue display
+    let queueDisplay
 
-    return(
-        <>
+    if (!props.queue) {
+        queueDisplay = (
             <form onSubmit={joinQueue}>
                 <input type='submit' value='Get In Line!' />
             </form>
+        )
+    } else {
+        fetch(apiUrl + '/queue/sort', {
+            headers: { 'Content-Type': 'application/JSON', 'Authorization': 'Bearer ' + props.user.token }
+        })
+            .then(data => data.json())
+            .then(fullQueue => {
+                return fullQueue.map(queue => {
+                    return queue.owner._id
+                })
+            })
+            .then(fullQueueIds => {
+                return fullQueueIds.indexOf(props.user._id)
+            })
+            .then(index => {
+                console.log('this is the idnex of the item we are lookign at:', index)
+                console.log('this is the new value of queue element on page', queueDisplay)
+                queueDisplay = (
+                    <div>
+                        <p>You are number {index + 1} in line!</p>
+                    </div>
+                )
+            })
+            .catch(error => console.log(error))
+    }
+    
 
+    return(
+        <>
+            {queueDisplay}
             <Chat 
                 profile={props.profile} 
                 messagesData={messagesData}

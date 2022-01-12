@@ -1,17 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
+html {
+  height: 100vh;
+}
+
 body {
   background-color: #4A1942;
   color: #2E1C2B;
   font-family: helvetica;
+  /* height: 100vh; */
   margin: 0;
 }
 
 #root {
   background-color: #EAEAEA;
   max-width: 600px;
-  margin: auto;
-  min-height: 100vh;
+  margin: 20px auto;
   padding: 10px 30px;
 }
 
@@ -49,7 +53,7 @@ ul {
   background-color: #2E1C2B;
   color: #EAEAEA;
   width: 260px;
-  padding: 5px 10px;
+  padding: 2px 10px;
   border-radius: 10px;
   margin: 4px 0;
 }
