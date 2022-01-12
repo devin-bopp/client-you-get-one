@@ -18,8 +18,8 @@ body {
   background-color: #EAEAEA;
   max-width: 600px;
   margin: 20px auto;
-  padding: 10px 30px;
-  border-radius: 3px;
+  padding: 30px 30px 40px 30px;
+  border-radius: 4px;
 }
 
 h1, h2 {

@@ -34,6 +34,7 @@ export default function Queue(props) {
             .then(response => response.json())
             .then(response => {
                 props.getQueue()
+                socket.emit('joined queue')
             })
             .catch(error => {console.log(error)})
     }
