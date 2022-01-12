@@ -13,6 +13,10 @@ export default function Queue(props) {
             console.log(messagesData)
             setMessagesData(prev => prev.concat([data]))
 		})
+        socket.on('queue update', () => {
+            console.log('received queue update from server')
+            props.getQueue()
+        })
     }, [socket])
 
     const joinQueue = (e) => {
@@ -50,7 +54,7 @@ export default function Queue(props) {
         )
     } else {
         queueDisplay = (
-            <p>There are {props.queue} users ahead of you!</p>
+            <p>There {props.queue - 1 === 1 ? 'is' : 'are'} {props.queue - 1} {props.queue - 1 === 1 ? 'user' : 'users'}  ahead of you!</p>
         )
     }
 
