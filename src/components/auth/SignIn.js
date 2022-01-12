@@ -45,12 +45,8 @@ const SignIn = (props) => {
                 return props.profile
             })
 			.then((profile) => {
-                // if (!profile) {
-                //     navigate('/new-profile')
-                //     console.log(props.profile)
-                // } else {
-                    navigate('/')
-                // }
+                navigate('/')
+
             })
 			.catch((error) => {
                 setEmail('')
@@ -70,6 +66,7 @@ const SignIn = (props) => {
                 <label for='email'>Email address</label>
                 <input
                     required
+                    class='auth-input'
                     type='email'
                     name='email'
                     id='email'
@@ -80,6 +77,7 @@ const SignIn = (props) => {
                 <label for='password'>Password</label>
                 <input
                     required
+                    class='auth-input'
                     name='password'
                     id='password'
                     value={password}

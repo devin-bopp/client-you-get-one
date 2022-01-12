@@ -50,6 +50,7 @@ const SignUp = (props) => {
                 <label>Email address</label>
                 <input
                     required
+                    className='auth-input'
                     type='email'
                     name='email'
                     value={email}
@@ -59,6 +60,7 @@ const SignUp = (props) => {
                 <label>Password</label>
                 <input
                     required
+                    className='auth-input'
                     name='password'
                     value={password}
                     type='password'
@@ -68,6 +70,7 @@ const SignUp = (props) => {
                 <label>Password Confirmation</label>
                 <input
                     required
+                    className='auth-input'
                     name='passwordConfirmation'
                     value={passwordConfirmation}
                     type='password'

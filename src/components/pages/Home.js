@@ -10,14 +10,14 @@ export default function Home(props) {
 
 	if (!props.user) {
 		content = (
-			<>
+			<div id='auth-forms'>
 				<div id='sign-up'>
 					<SignUp msgAlert={props.msgAlert} setUser={props.setUser} />
 				</div>
 				<div id='log-in'>
 					<SignIn msgAlert={props.msgAlert} setUser={props.setUser} profile={props.profile} getProfile={props.getProfile} />
 				</div>
-			</>
+			</div>
 		)
 	} else if (!props.profile) {
 		content = (
