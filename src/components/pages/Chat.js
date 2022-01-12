@@ -3,6 +3,7 @@ import Message from './Message'
 
 import { socket } from '../../App'
 
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 export default function Chat(props) {
     // state
@@ -25,12 +26,11 @@ export default function Chat(props) {
             })
 		}
 	}
-
-    const [updateToggle, setUpdateToggle] = useState(true)
         
     const messages = props.messagesData.map((data, i) => {
         return <Message
             key={i}
+            sameSender={i > 0 ? data.sender === props.messagesData[i - 1].sender : false}
             sender={data.sender}
             message={data.message}
             isSelf={props.profile.name === data.sender}
@@ -40,7 +40,10 @@ export default function Chat(props) {
     return(
         <div id='chatbox'>
             <div id='messages'>
-                {messages}
+            <ScrollToBottom className='messages'>
+                    {messages}
+            </ScrollToBottom>
+
             </div>
             <form onSubmit={messageSend}>
                 <input 

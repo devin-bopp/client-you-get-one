@@ -5,6 +5,7 @@ import apiUrl from "../../apiConfig"
 
 export default function Queue(props) {
     const [messagesData, setMessagesData] = useState([])
+    const [latestMessageFrom, setLatestMessageFrom] = useState('')
     const [inLine, setInLine] = useState(false)
 
     useEffect(() => {
@@ -12,6 +13,7 @@ export default function Queue(props) {
         socket.on('broadcast', data => {
             console.log(messagesData)
             setMessagesData(prev => prev.concat([data]))
+            setLatestMessageFrom(data.sender)
 		})
         socket.on('queue update', () => {
             console.log('received queue update from server')
