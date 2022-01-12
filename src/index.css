@@ -19,6 +19,7 @@ body {
   max-width: 600px;
   margin: 20px auto;
   padding: 10px 30px;
+  border-radius: 3px;
 }
 
 h1, h2 {
@@ -62,12 +63,14 @@ ul {
 
 #chatbox {
   /* height: 500px; */
+  resize: vertical
 }
 
 .messages {
-  height: 200px;
+  height: 500px;
   /* overflow: auto; */
   padding: 0;
+  overflow-wrap: normal;
   
 }
 
@@ -79,7 +82,6 @@ ul {
 .message {
   /* background-color: #2E1C2B;
   color: #EAEAEA; */
-  width: 260px;
   padding: 0 10px;
   margin: 0;
   /* border-radius: 10px;
@@ -89,8 +91,6 @@ ul {
 .message-text {
   margin: 5px 0 5px 10px;
 }
-
-div[class^='react-scroll'], div[class*=' react-scroll']
 
 div[class^='react-scroll']::-webkit-scrollbar-track, div[class*=' react-scroll']::-webkit-scrollbar-track {
   border: 0px;
@@ -109,23 +109,6 @@ div[class^='react-scroll']::-webkit-scrollbar-thumb, div[class*=' react-scroll']
   background-color: #737272;
   border: 1px solid #000;
 }
-
-/* .react-scroll-to-bottom--css-jmmsp-1tj0vk3::-webkit-scrollbar-track {
-  border: 0px;
-  padding: 2px 0;
-  background-color: transparent;
-}
-
-.react-scroll-to-bottom--css-jmmsp-1tj0vk3::-webkit-scrollbar {
-  width: 10px;
-}
-
-.react-scroll-to-bottom--css-jmmsp-1tj0vk3::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-  background-color: #737272;
-  border: 1px solid #000;
-} */
 
 /* RESPONSIVE ELEMENTS */
 
