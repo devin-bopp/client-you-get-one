@@ -39,12 +39,16 @@ export default function Queue(props) {
     // content for the queue display
     let queueDisplay
 
+    // index 0 means they are not in line
+    // show the button
     if (props.queue === 0) {
         queueDisplay = (
             <form onSubmit={joinQueue}>
                 <input type='submit' value='Get In Line!' />
             </form>
         )
+    // if user is first in line, it is their turn
+    // they get access to the pet button
     } else if (props.queue === 1) {
         queueDisplay = (
             <>
@@ -52,43 +56,12 @@ export default function Queue(props) {
                 <p>Click here to enter.</p>
             </>
         )
+    // if they are already in line this tells them how many people are ahead of them
     } else {
         queueDisplay = (
-            <p>There {props.queue - 1 === 1 ? 'is' : 'are'} {props.queue - 1} {props.queue - 1 === 1 ? 'user' : 'users'}  ahead of you!</p>
+            <p>There {props.queue - 1 === 1 ? 'is' : 'are'} {props.queue - 1} {props.queue - 1 === 1 ? 'user' : 'users'} ahead of you!</p>
         )
     }
-
-    if (!props.queue) {
-        queueDisplay = (
-            <form onSubmit={joinQueue}>
-                <input type='submit' value='Get In Line!' />
-            </form>
-        )
-    } else {
-        fetch(apiUrl + '/queue/sort', {
-            headers: { 'Content-Type': 'application/JSON', 'Authorization': 'Bearer ' + props.user.token }
-        })
-            .then(data => data.json())
-            .then(fullQueue => {
-                return fullQueue.map(queue => {
-                    return queue.owner._id
-                })
-            })
-            .then(fullQueueIds => {
-                return fullQueueIds.indexOf(props.user._id)
-            })
-            .then(index => {
-                console.log('this is the idnex of the item we are lookign at:', index)
-                console.log('this is the new value of queue element on page', queueDisplay)
-                queueDisplay = (
-                    <div>
-                        <p>You are number {index + 1} in line!</p>
-                    </div>
-                )
-            })
-            .catch(error => console.log(error))
-    }
-    
 
     return(
         <>
