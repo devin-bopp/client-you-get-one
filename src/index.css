@@ -83,6 +83,22 @@ ul {
   border: none;
   border-radius: 0 0 0 5px;
   padding: 8px 0 8px 10px;
+  outline: none;
+  background-color: #a2a2a2;
+  color: #EAEAEA
+}
+
+#message-text-input::placeholder {
+  color: #EAEAEA;
+}
+
+#message-text-input:focus {
+  color: #2E1C2B;
+  background-color: white;
+}
+
+#message-text-input:focus::placeholder {
+  color: #a2a2a2
 }
 
 .messages {
