@@ -23,7 +23,7 @@ import PetRoom from './components/pages/PetRoom'
 const { io } = require('socket.io-client')
 
 // THIS IS GOING TO HAVE TO CHANGE FOR DEPLOYMENT!!!!
-export const socket = io('http://localhost:8000')
+export const socket = io(apiUrl)
 
 const App = () => {
 	
