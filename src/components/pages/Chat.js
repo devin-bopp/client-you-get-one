@@ -45,11 +45,11 @@ export default function Chat(props) {
             </ScrollToBottom>
 
             </div>
-            <form onSubmit={messageSend}>
+            <form onSubmit={messageSend} id='message-form'>
                 <input 
                     type="text" 
                     name="message" 
-                    id="message" 
+                    id="message-text-input" 
                     placeholder="Start a new message" 
                     onChange={messageChangeHandler} 
                     value={newPayload.message}
