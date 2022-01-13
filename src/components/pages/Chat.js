@@ -55,7 +55,7 @@ export default function Chat(props) {
                     value={newPayload.message}
                     autoComplete='off'
                 />
-                <input type="submit" value="Send" />
+                <input id='send-button' type="submit" value="Send" />
             </form>
         </div>
     )
