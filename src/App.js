@@ -152,6 +152,7 @@ const App = () => {
 								profile={profile} 
 								queue={queue}
 								getQueue={getQueue}
+								setQueue={setQueue}
 							/>
 						</RequireAuth>
 					}

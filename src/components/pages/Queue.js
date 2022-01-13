@@ -40,6 +40,24 @@ export default function Queue(props) {
             .catch(error => {console.log(error)})
     }
 
+    const leaveQueue = (e) => {
+        e.preventDefault()
+        let preJSONBody = {
+            owner: props.user._id
+        }
+        fetch(apiUrl + '/queue', {
+            method: 'DELETE',
+            // body: JSON.stringify(preJSONBody),
+            headers: { 'Authorization': 'Bearer ' + props.user.token }
+        })
+            .then(() => {
+                console.log('this is right before set queue')
+                socket.emit('left queue')
+                props.getQueue()
+            })
+            .catch(error => {console.log(error)})
+    }
+
     // content for the queue display
     let queueDisplay
 
@@ -63,7 +81,12 @@ export default function Queue(props) {
     // if they are already in line this tells them how many people are ahead of them
     } else {
         queueDisplay = (
-            <p>There {props.queue - 1 === 1 ? 'is' : 'are'} {props.queue - 1} {props.queue - 1 === 1 ? 'user' : 'users'} ahead of you!</p>
+            <>
+                <p>There {props.queue - 1 === 1 ? 'is' : 'are'} {props.queue - 1} {props.queue - 1 === 1 ? 'user' : 'users'} ahead of you!</p>
+                <form onSubmit={leaveQueue}>
+                    <input type='submit' value='Leave the Queue' />
+                </form>
+            </>
         )
     }
 
