@@ -86,7 +86,7 @@ ul {
 }
 
 .messages {
-  height: 500px;
+  height: 400px;
   /* overflow: auto; */
   padding: 0;
   overflow-wrap: normal;
@@ -126,7 +126,7 @@ div[class^='react-scroll']::-webkit-scrollbar-thumb, div[class*=' react-scroll']
 #send-button {
   border: none;
   border-radius: 0 0 5px 0;
-  padding: 8px auto;
+  padding: 8px 20px;
   background-color: #4A1942;
   color: #EAEAEA;
 }
