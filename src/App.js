@@ -161,7 +161,7 @@ const App = () => {
 					path='/pet'
 					element={
 						<RequireAuth user={user}>
-							<PetRoom getQueue={getQueue} user={user} />
+							<PetRoom getQueue={getQueue} user={user} getProfile={getProfile} />
 						</RequireAuth>
 					}
 				/>

@@ -45,7 +45,8 @@ export default function Home(props) {
 	} else {
 		content = (
 			<>
-				<p>Hello, {props.profile.name}!</p>
+				{props.getProfile()}
+				<p>Hello, {props.profile.name}! You have fed the pet {props.profile.fedCount} times!</p>
 				{welcomeMessage}
 				<Link to='queue'>Go to the queue</Link>
 			</>
