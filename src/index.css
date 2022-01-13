@@ -68,9 +68,10 @@ ul {
 /* ---------------------- */
 
 #chatbox {
-  border: 2px black solid;
-  border-radius: 4px;
+  /* border: 3px black solid; */
+  border-radius: 5px;
   margin: 10px 0;
+  background-color: #dfdfdf;
 }
 
 #message-form {
@@ -78,13 +79,11 @@ ul {
 }
 
 #message-text-input {
-  /* width: 100% */
   flex-grow: 10;
 }
 
 .messages {
   height: 500px;
-  background-color: #e3e3e3;
   /* overflow: auto; */
   padding: 0;
   overflow-wrap: normal;
