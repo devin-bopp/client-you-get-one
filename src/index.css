@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
+/* ---------------- */
 /* FULL APP STYLING */
+/* ---------------- */
 
 html {
   height: 100vh;
@@ -41,7 +43,9 @@ ul {
   color: inherit
 }
 
+/* ---------- */
 /* AUTH FORMS */
+/* ---------- */
 
 .auth-input {
   display: block;
@@ -59,7 +63,9 @@ ul {
 #sign-up, #log-in {
 }
 
+/* ---------------------- */
 /* CHAT SPECIFIC ELEMENTS */
+/* ---------------------- */
 
 #chatbox {
   border: 2px black solid;
@@ -72,7 +78,6 @@ ul {
   /* overflow: auto; */
   padding: 0;
   overflow-wrap: normal;
-  
 }
 
 .sender {
@@ -81,12 +86,8 @@ ul {
 }
 
 .message {
-  /* background-color: #2E1C2B;
-  color: #EAEAEA; */
   padding: 0 10px;
   margin: 0;
-  /* border-radius: 10px;
-  margin: 4px 0; */
 }
 
 .message-text {
@@ -104,18 +105,19 @@ div[class^='react-scroll']::-webkit-scrollbar, div[class*=' react-scroll']::-web
 }
 
 div[class^='react-scroll']::-webkit-scrollbar-thumb, div[class*=' react-scroll']::-webkit-scrollbar-thumb {
-/* .react-scroll-to-bottom--css-jmmsp-1tj0vk3::-webkit-scrollbar-thumb { */
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0,0,0,.3);
   background-color: #737272;
   border: 1px solid #000;
 }
 
-/* pet page */
+/* -------- */
+/* PET PAGE */
+/* -------- */
+
 #pet-img {
   width: 200px;
 }
-
 
 /* RESPONSIVE ELEMENTS */
 
