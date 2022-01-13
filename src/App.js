@@ -17,6 +17,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateProfile from './components/pages/CreateProfile'
 import Queue from './components/pages/Queue'
+import PetRoom from './components/pages/PetRoom'
 
 // socket.io client
 const { io } = require('socket.io-client')
@@ -152,6 +153,14 @@ const App = () => {
 								queue={queue}
 								getQueue={getQueue}
 							/>
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path='/pet'
+					element={
+						<RequireAuth user={user}>
+							<PetRoom />
 						</RequireAuth>
 					}
 				/>

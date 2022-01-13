@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import Chat from "./Chat"
 import { socket } from "../../App"
 import apiUrl from "../../apiConfig"
+import { Link } from 'react-router-dom'
 
 export default function Queue(props) {
     const [messagesData, setMessagesData] = useState([])
@@ -56,7 +57,7 @@ export default function Queue(props) {
         queueDisplay = (
             <>
                 <p>It's your turn!</p>
-                <p>Click here to enter.</p>
+                <p><Link to='../pet'>Click here</Link> to enter.</p>
             </>
         )
     // if they are already in line this tells them how many people are ahead of them

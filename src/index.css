@@ -111,6 +111,12 @@ div[class^='react-scroll']::-webkit-scrollbar-thumb, div[class*=' react-scroll']
   border: 1px solid #000;
 }
 
+/* pet page */
+#pet-img {
+  width: 200px;
+}
+
+
 /* RESPONSIVE ELEMENTS */
 
 @media only screen and (max-width: 600px) {
