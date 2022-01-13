@@ -6,20 +6,17 @@ import { Link } from 'react-router-dom'
 
 export default function Queue(props) {
     const [messagesData, setMessagesData] = useState([])
-    const [latestMessageFrom, setLatestMessageFrom] = useState('')
     const [inLine, setInLine] = useState(false)
 
     useEffect(() => {
-        console.log('the use effect ')
-        socket.on('broadcast', data => {
-            console.log(messagesData)
-            setMessagesData(prev => prev.concat([data]))
-            setLatestMessageFrom(data.sender)
-		})
-        socket.on('queue update', () => {
-            console.log('received queue update from server')
-            props.getQueue()
-        })
+        const broadcastListener = data => setMessagesData(prev => prev.concat([data]))
+        const queueUpdateListener = () => props.getQueue()
+        socket.on('broadcast', broadcastListener)
+        socket.on('queue update', queueUpdateListener)
+        return () => {
+            socket.removeListener('broadcast', broadcastListener)
+            socket.removeListener('queue update', queueUpdateListener)
+        }
     }, [socket])
 
     const joinQueue = (e) => {
