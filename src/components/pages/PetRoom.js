@@ -7,10 +7,14 @@ export default function PetRoom(props) {
     
     // boots player from /pet once their time has ended
     useEffect(() => {
-        socket.on('kick current player', () => {
-            console.log('your time with the pet has ended!')
+        const kickPlayerListener = () => {
+            props.getQueue()
             navigate('/queue')
-        })
+        }
+        socket.on('kick current player', kickPlayerListener)
+        return () => {
+            socket.removeListener('kick current player', kickPlayerListener)
+        }
     }, [socket])
 
     return (
