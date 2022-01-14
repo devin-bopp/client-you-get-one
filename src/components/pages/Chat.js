@@ -9,7 +9,8 @@ export default function Chat(props) {
     // state
     const [newPayload, setNewPayload] = useState({
         message: '',
-        sender: props.profile.name
+        sender: props.profile.name,
+        count: props.profile.fedCount
     })
 
     const messageChangeHandler = (e) => {
@@ -22,7 +23,8 @@ export default function Chat(props) {
 			socket.emit('chat message', newPayload)
 			setNewPayload({
                 message: '',
-                sender: props.profile.name  
+                sender: props.profile.name,
+                count: props.profile.fedCount
             })
 		}
 	}
@@ -33,6 +35,7 @@ export default function Chat(props) {
             sameSender={i > 0 ? data.sender === props.messagesData[i - 1].sender : false}
             sender={data.sender}
             message={data.message}
+            count={data.count}
             isSelf={props.profile.name === data.sender}
         />
     })
