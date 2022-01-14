@@ -12,7 +12,7 @@ export default function PetRoom(props) {
         const kickPlayerListener = () => {
             props.getQueue()
             props.getProfile()
-            navigate('/queue')
+            navigate('/')
         }
         socket.on('kick current player', kickPlayerListener)
         return () => {

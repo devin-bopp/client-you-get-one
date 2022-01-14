@@ -4,7 +4,7 @@ export default function Message(props) {
     if (!props.sameSender) {
         message = (
             <>
-                <p className='sender'>{props.isSelf ? (<b><i>{props.sender}</i></b>) : (<b>{props.sender}</b>) } <small>{props.count}</small></p>
+                <p className='sender'>{props.isSelf ? (<b><i>{props.sender}</i></b>) : (<b>{props.sender}</b>) } - {props.count}</p>
                 <p className='message-text'>{props.message}</p>
             </>
         )

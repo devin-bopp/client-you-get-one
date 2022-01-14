@@ -43,6 +43,18 @@ ul {
   color: inherit
 }
 
+input[type='submit'] {
+  background-color: #4A1942;
+  color: #EAEAEA;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+input[type='submit']:hover {
+  background-color: #963286;
+}
+
 /* ---------- */
 /* AUTH FORMS */
 /* ---------- */
