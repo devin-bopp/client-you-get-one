@@ -7,11 +7,14 @@ import { Link } from 'react-router-dom'
 export default function Queue(props) {
     const [messagesData, setMessagesData] = useState([])
 
+    // useEffect checks for changes to the socket
     useEffect(() => {
         const broadcastListener = data => setMessagesData(prev => prev.concat([data]))
         const queueUpdateListener = () => props.getQueue()
+        // depending on broadcast type, a different effect is triggered
         socket.on('broadcast', broadcastListener)
         socket.on('queue update', queueUpdateListener)
+        // cleanup to prevent memory leaks
         return () => {
             socket.removeListener('broadcast', broadcastListener)
             socket.removeListener('queue update', queueUpdateListener)
