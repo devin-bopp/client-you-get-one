@@ -14,21 +14,21 @@ export default function Chat(props) {
     })
 
     const messageChangeHandler = (e) => {
-        setNewPayload({... newPayload, [e.target.name]: e.target.value})
+        setNewPayload({ ...newPayload, [e.target.name]: e.target.value })
     }
 
     const messageSend = (e) => {
         e.preventDefault()
-		if (newPayload.message) {
-			socket.emit('chat message', newPayload)
-			setNewPayload({
+        if (newPayload.message) {
+            socket.emit('chat message', newPayload)
+            setNewPayload({
                 message: '',
                 sender: props.profile.name,
                 count: props.profile.fedCount
             })
-		}
-	}
-        
+        }
+    }
+
     const messages = props.messagesData.map((data, i) => {
         return <Message
             key={i}
@@ -40,21 +40,21 @@ export default function Chat(props) {
         />
     })
 
-    return(
+    return (
         <div id='chatbox'>
             <div id='messages'>
-            <ScrollToBottom className='messages'>
+                <ScrollToBottom className='messages'>
                     {messages}
-            </ScrollToBottom>
+                </ScrollToBottom>
 
             </div>
             <form onSubmit={messageSend} id='message-form'>
-                <input 
-                    type="text" 
-                    name="message" 
-                    id="message-text-input" 
-                    placeholder="Start a new message" 
-                    onChange={messageChangeHandler} 
+                <input
+                    type="text"
+                    name="message"
+                    id="message-text-input"
+                    placeholder="Start a new message"
+                    onChange={messageChangeHandler}
                     value={newPayload.message}
                     autoComplete='off'
                 />

@@ -18,17 +18,17 @@ export default function Home(props) {
 				{welcomeMessage}
 				<div id='auth-forms'>
 					<div id='sign-up'>
-						<SignUp 
-							msgAlert={props.msgAlert} 
-							setUser={props.setUser} 
+						<SignUp
+							msgAlert={props.msgAlert}
+							setUser={props.setUser}
 						/>
 					</div>
 					<div id='log-in'>
-						<SignIn 
-							msgAlert={props.msgAlert} 
-							setUser={props.setUser} 
-							profile={props.profile} 
-							getProfile={props.getProfile} 
+						<SignIn
+							msgAlert={props.msgAlert}
+							setUser={props.setUser}
+							profile={props.profile}
+							getProfile={props.getProfile}
 						/>
 					</div>
 				</div>

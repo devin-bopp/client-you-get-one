@@ -14,7 +14,7 @@ export default function CreateProfile(props) {
 
     const handleChange = (e) => {
         console.log('this is e.target.value: ' + e.target.value)
-        setNewProfile({...newProfile, [e.target.name]: e.target.value})
+        setNewProfile({ ...newProfile, [e.target.name]: e.target.value })
     }
 
     const handleSubmit = (e) => {
@@ -40,7 +40,7 @@ export default function CreateProfile(props) {
 
     }
 
-    return(
+    return (
         <div>
             <h1>create your profile</h1>
             <form onSubmit={handleSubmit}>

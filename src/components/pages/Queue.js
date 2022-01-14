@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 
 export default function Queue(props) {
     const [messagesData, setMessagesData] = useState([])
-    const [inLine, setInLine] = useState(false)
 
     useEffect(() => {
         const broadcastListener = data => setMessagesData(prev => prev.concat([data]))
@@ -34,7 +33,7 @@ export default function Queue(props) {
                 props.getQueue()
                 socket.emit('joined queue')
             })
-            .catch(error => {console.log(error)})
+            .catch(error => { console.log(error) })
     }
 
     const leaveQueue = (e) => {
@@ -52,7 +51,7 @@ export default function Queue(props) {
                 socket.emit('left queue')
                 props.getQueue()
             })
-            .catch(error => {console.log(error)})
+            .catch(error => { console.log(error) })
     }
 
     // content for the queue display
@@ -87,16 +86,14 @@ export default function Queue(props) {
         )
     }
 
-    return(
+    return (
         <>
             {queueDisplay}
             <p>You can chat with your fellow users while you wait!</p>
-            <Chat 
-                profile={props.profile} 
+            <Chat
+                profile={props.profile}
                 messagesData={messagesData}
             />
         </>
-
-
     )
 }

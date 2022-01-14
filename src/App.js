@@ -22,16 +22,15 @@ import PetRoom from './components/pages/PetRoom'
 // socket.io client
 const { io } = require('socket.io-client')
 
-// THIS IS GOING TO HAVE TO CHANGE FOR DEPLOYMENT!!!!
 export const socket = io(apiUrl)
 
 const App = () => {
-	
+
 	const [user, setUser] = useState(null)
 	const [profile, setProfile] = useState(null)
 	const [queue, setQueue] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
-	
+
 	const clearUser = () => {
 		console.log('clear user ran')
 		setUser(null)
@@ -147,9 +146,9 @@ const App = () => {
 					path='/queue'
 					element={
 						<RequireAuth user={user}>
-							<Queue 
-								user={user} 
-								profile={profile} 
+							<Queue
+								user={user}
+								profile={profile}
 								queue={queue}
 								getQueue={getQueue}
 								setQueue={setQueue}
