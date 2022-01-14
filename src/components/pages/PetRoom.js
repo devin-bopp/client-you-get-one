@@ -53,7 +53,7 @@ export default function PetRoom(props) {
                 <form onSubmit={feedFrog} >
                     <input type='submit' value='Feed Him' />
                 </form>
-                <p>You will be returned to the queue page when your time has expired.</p>
+                <p>You will be returned to the home page when your time has expired.</p>
             </div>
         </>
     )

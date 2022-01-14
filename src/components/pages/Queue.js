@@ -90,6 +90,7 @@ export default function Queue(props) {
     return(
         <>
             {queueDisplay}
+            <p>You can chat with your fellow users while you wait!</p>
             <Chat 
                 profile={props.profile} 
                 messagesData={messagesData}
