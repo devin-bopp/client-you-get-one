@@ -56,6 +56,9 @@ export default function Home(props) {
 	return (
 		<>
 			{content}
+			<div style={{margin: '20px 0 0 0'}}>
+				<small><i>You Get One</i> was created by Devin Bopp. Learn more <a href="https://github.com/devinrbopp/client-you-get-one" target='_blank'>on Github</a>.</small>
+			</div>
 		</>
 	)
 }
