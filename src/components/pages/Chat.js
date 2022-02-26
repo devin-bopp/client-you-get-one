@@ -1,4 +1,4 @@
-import { useState, useEffect, forceUpdate } from 'react'
+import { useState } from 'react'
 import Message from './Message'
 
 import { socket } from '../../App'
